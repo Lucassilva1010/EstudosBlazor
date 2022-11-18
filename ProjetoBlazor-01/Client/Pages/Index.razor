@@ -1,0 +1,33 @@
+﻿@page "/"
+@using ProjetoBlazor_01-01.Client.wwwroot.Testes
+
+<PageTitle>Index</PageTitle>
+
+<h1>Seja Bem-Vindo!</h1>
+
+Este é o meu APP de Estudo!
+
+<h2>@n </h2>
+<h2> @tt.Frase("Augusto") </h2> @*Classe Local*@
+<h3> @Mensagens.Frases("Lucas","Silva"); </h3> @*Classe em pastas*@
+<h3> @Calculos.Soma(10,15.6) </h3> @*Classe em pastas*@
+
+<h3> @Calculos.Login("Lucas",333) </h3> @*Classe em pastas*@
+
+
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+
+
+
+@code{
+    string n = "Lucas";
+    
+    
+    public class tt{
+
+        public static string Frase(string nome)=>"Seja bem vindo "+nome;
+    }
+}

@@ -1,0 +1,28 @@
+﻿@page "/contagem"
+
+<PageTitle>Contagem</PageTitle>
+
+<h1>Realizando contagens com cliks</h1>
+
+<p role="status">Contagem atual: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Começar conrtagem</button>
+<button class="btn btn-primary" @onclick="Decremento">Começar Diminuir</button>
+<h2> @Calculos.Login("lucas",132)</h2>
+
+@code {
+    private int currentCount = 0;
+    private int decrement = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    } 
+    private void Decremento()
+    {
+        if(currentCount>0){
+
+            currentCount--;
+        }
+    }
+}
