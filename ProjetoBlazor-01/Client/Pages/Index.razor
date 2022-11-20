@@ -1,20 +1,14 @@
 ﻿@page "/"
-@using ProjetoBlazor_01-01.Client.wwwroot.Testes
+@using System.Globalization @*Usado para traduzir para outra Linguagem o dia da semana*@
+
 
 <PageTitle>Index</PageTitle>
 
-<h1>Seja Bem-Vindo!</h1>
+<h1>Seja Bem-Vindo,@tt.Frase("Lucas Augusto")!</h1>
 
-Este é o meu APP de Estudo!
+<h3>Este é o meu APP de Estudo!</h3>
 
-<h2>@n </h2>
-<h2> @tt.Frase("Augusto") </h2> @*Classe Local*@
-<h3> @Mensagens.Frases("Lucas","Silva"); </h3> @*Classe em pastas*@
-<h3> @Calculos.Soma(10,15.6) </h3> @*Classe em pastas*@
-
-<h3> @Calculos.Login("Lucas",333) </h3> @*Classe em pastas*@
-
-
+<h3>Hoje é @DiaAtual, Dia @DateTime.Now.ToString(@"dd-MM-yyyy",new CultureInfo("pt-PT")), e são exatamente @DateTime.Now.ToString("H:mm:ss")</h3>@*Buscando a data atual e a Hora Atual*@
 
 <SurveyPrompt Title="How is Blazor working for you?" />
 
@@ -23,8 +17,7 @@ Este é o meu APP de Estudo!
 
 
 @code{
-    string n = "Lucas";
-    
+   public DayOfWeek DiaAtual { get; }//Buscando o dia Atual
     
     public class tt{
 

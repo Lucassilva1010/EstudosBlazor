@@ -1,58 +1,10 @@
 ﻿@page "/calculandoo"
 @using ProjetoBlazor_01.Client.Produto_
 
-<h3>Calculando</h3>
+<h3>Somando 10 + 20 por acesso de metos e classes diferentes: @Calculos.Soma(10,20)</h3<br/> 
 
-@Calculos.Soma(10,20)
 
-<h1> Praticando a Lista e os Laços de Repetição sendo invocado de outra pasta e classe! </h1>
-
-@foreach(int itens in   GetProdutos()){//Não acessa o Metodo
-
-        <h3>Lista de Novos Produto!</h3>
-
-    <h4>Esse é o meu Novo Produto: @ListaProdutos.LP.Nome</h4>
-    <h4>A sua data de Cadastro foi: @.Data.ToString("dd/MM/yyyy")</h4>
-}
 
 @code {
 
-    public class testeee{
-
-    public List<ItensP> LProdutos { get { return GetProdutos(); } }//Proprieade para acessar o metodo
-
-
-    //Metodo que cria a minha lista de Itens para aparecer na minha loja, usando o Foreach e o for
-    public List<ItensP> GetProdutos()
-    {
-        return new List<ItensP>(){
-
-                new ItensP()
-                {
-                    Nome = "Telefone Celular",
-                    Data = new DateTime(18,11,2022)
-                },
-
-                new ItensP()
-                {
-                    Nome =  "Tv de LED",
-                    Data = new DateTime(17,11,2022)
-                },
-
-                new ItensP()
-                {
-                    Nome = "Computador",
-                    Data = new DateTime(16/11/2022)
-                },
-
-                new ItensP()
-                {
-                    Nome = "Kit Multimedia",
-                    Data = new DateTime(20/10/2021)
-                }
-
-            };
-    }
-
-    }
 }

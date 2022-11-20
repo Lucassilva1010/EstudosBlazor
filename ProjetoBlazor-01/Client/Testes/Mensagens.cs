@@ -7,7 +7,7 @@ namespace ProjetoBlazor_01.Client.Testes
        
         public static string Frases(string nome, string nome2)
         {
-            return "seja bem vindo" + nome+""+nome2;
+            return "Seja Bem Vindo " + nome+""+nome2;
         }
     }
 }

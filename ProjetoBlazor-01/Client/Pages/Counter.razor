@@ -1,14 +1,20 @@
 ﻿@page "/contagem"
 
-<PageTitle>Contagem</PageTitle>
+<PageTitle>Contagem + Login</PageTitle>
+
+
+<h1>Testando um metodo Condicional IF</h1>
+
+<h3> @Calculos.Login("lucas",132)</h3><br/><br/>
 
 <h1>Realizando contagens com cliks</h1>
 
-<p role="status">Contagem atual: @currentCount</p>
+<h3><p role="status">Contagem atual: @currentCount</p></h3>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Começar conrtagem</button>
 <button class="btn btn-primary" @onclick="Decremento">Começar Diminuir</button>
-<h2> @Calculos.Login("lucas",132)</h2>
+
+
 
 @code {
     private int currentCount = 0;
