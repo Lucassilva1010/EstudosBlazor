@@ -33,13 +33,8 @@
                 {
                     Nome = "Kit Multimedia",
                     Data = new DateTime(2022, 11, 17)
-                }
-
-            };
-        }
-        public static List<ItensP> GProdutos2()
-        {
-            return new List<ItensP>(){
+                },
+                       
 
                 new ItensP()
                 {

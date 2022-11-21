@@ -1,0 +1,23 @@
+﻿@page "/pormocao"
+
+<h3>Promoções do Dia!</h3>
+
+@foreach (var produtos in PromocaoItens.ItensPromo())
+{
+
+    @if(produtos.Nome.Contains("Celular"))
+    {
+        <h2>O produto na Promoção de Hoje com 20% de desconto É:</h2>
+        <h1>@produtos.Nome </h1>
+        <h2>Por o valor de @produtos.Valor  </h2><br/>
+    }
+}
+
+
+
+@code {
+
+  //Tentar criar um metodo que terne aqui apenas os produtos que estõa em promoção 
+
+
+}

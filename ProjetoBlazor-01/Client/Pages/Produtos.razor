@@ -35,6 +35,19 @@
     
 }
 
+<h1>O ultimo Produto Cadastrado foi!</h1>
+
+@for (var i = 0; i < @PromocaoItens.ProdutosPromo.Count; i++)
+{
+    @if (i == PromocaoItens.ProdutosPromo.Count-1)
+    {
+        <h3>Este é o ultimo produto</h3>
+        
+         <h4>O ultimo Produto do Estoque é: @PromocaoItens.ProdutosPromo[i].Nome</h4>
+    }
+   
+}
+
 @code {
 
   
