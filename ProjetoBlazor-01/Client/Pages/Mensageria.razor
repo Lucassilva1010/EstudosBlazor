@@ -4,9 +4,42 @@
 <h3>Buscando Mensagens em outras calasses atraves de metodos e instancias</h3><br/><br/>
 
 
-<h3> @Mensagens.Frases(" Lucas ","Silva"); </h3> @*Classe em pastas*@
+<h3> @Mensagens.Frases(" Lucas ","Silva"); </h3> @*Classe em pastas*@<br/><br/>
 
+<h3>Criado com um Switch -  Atualiza de acordo com o dia da semana!</h3><br/>
+
+
+@switch (dia)
+{
+    case "Monday":
+        mensagem = "Este é o Primeiro dia da semana!";
+        break; 
+        
+        
+        case "Tuesday":
+        mensagem = "Hoje é o Segundo dia da semana!";
+        break;
+        
+        case "Wednesday":
+        mensagem = "Estamos no meio da semana!";
+        break;
+
+    case "Thursday":
+        mensagem = " Falta um dia para sexta!";
+        break;
+
+    case "Friday":
+    mensagem = "Amahã é sabado";
+        break;
+
+    default:
+        mensagem = "Hoje é "+dia;
+        break;
+}
+
+<h3>@mensagem</h3>
 
 @code {
-
+    string dia = DateTime.Now.DayOfWeek.ToString();
+    string mensagem = "";
 }

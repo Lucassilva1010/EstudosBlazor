@@ -9,15 +9,33 @@
     {
         <h2>O produto na Promoção de Hoje com 20% de desconto É:</h2>
         <h1>@produtos.Nome </h1>
-        <h2>Por o valor de @produtos.Valor  </h2><br/>
+                <h2>Por o valor de @produtos.Valor </h2>
+
+        <br/>
+
+        <br/>
     }
 }
 
-
+        <h1>Usando os Bindings!</h1> 
+        
+        <h1>Bidirecioal</h1> 
+         
+        <button @onclick="@AlteraEstado">Alterar Estado</button>
+    <br/>
+        Input Desabeld : <input disabled="@Estado"/>
+    <br/>
+        CheckBox Checked : <input type="checkbox" checked="@Estado"/>
+    <br/>
+        Input Readonly : <input readonly="@Estado"/>
 
 @code {
+    // No exercicio da seção 3 tem o projeto tarefas que eu posso fazer aqui para produtos
+    //Tentar criar um metodo que terne aqui apenas os produtos que estão em promoção 
 
-  //Tentar criar um metodo que terne aqui apenas os produtos que estão em promoção 
+    public bool Estado { get; set; }
 
-
+    private void AlteraEstado(){
+        Estado = !Estado;
+    }
 }

@@ -8,6 +8,7 @@
 
 <h3>Este é o meu APP de Estudo!</h3>
 
+@*Depois procruar saber como tranformar esse nome do dia da semana em português*@
 <h3>Hoje é @DiaAtual, Dia @DateTime.Now.ToString(@"dd-MM-yyyy",new CultureInfo("pt-PT")), e são exatamente @DateTime.Now.ToString("H:mm:ss")</h3>@*Buscando a data atual e a Hora Atual*@
 
 <SurveyPrompt Title="How is Blazor working for you?" />
@@ -21,6 +22,6 @@
     
     public class tt{
 
-        public static string Frase(string nome)=>"Seja bem vindo "+nome;
+        public static string Frase(string nome)=>"Seja bem vindo "+nome;//Isso é um metodo
     }
 }
