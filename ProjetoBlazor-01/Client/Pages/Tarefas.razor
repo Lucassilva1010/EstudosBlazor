@@ -1,0 +1,93 @@
+﻿@page "/tarefa"
+@inject HttpClient http
+
+@*Pegar esse arquivo como base e transformar a lista de produtos tambem como uma tabela, e fazer um arquivo no WWWRoot, para simular um BD de Produtos;
+Depois fazer com que essa mesma lista que está em WWWRoot apareça em toda a aplicação que chamar o ou falar sobre produtos*@
+
+
+<h3>Tarefas</h3>
+
+<br/>
+@*IF para verificar se as tarefas não estão vindo nulas*@
+@if(tarefas == null){
+
+    <p>Carregando....</p>
+
+}else if(!tarefas.Any()){
+
+    <p>Ainda não existem tarefas.....</p>
+}else{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Concluida</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in tarefas)
+           {
+            //Listando as tarefas
+               <tr>
+                   <td> @t.DataDescricao</td>
+                   <td> @t.Descricao</td>
+                   <td> <input type="checkbox" @bind="t.Concluida"/>@t.Concluida</td> @*//Adiciomnando um TowBindg para alterar em memoria o status da tarefa*@
+                   <td><button @onclick="@(()=> RemoveTarefa(t.ID))"><i class="oi oi-trash"></i></button></td>
+               </tr>
+           }
+        </tbody>
+    </table>
+}
+<tr/>
+ <h3>Nova Tarefa</h3>
+ <div class="form-group">
+     <label> Tarefas</label>
+     <input type="text" placeholder="Informa a Tarefa" @bind="novaTarefa"/>
+     <button class="btn btn-primary" @onclick="AdicionarNovaTarefa"> Registar nova Tarefa</button>
+ </div>
+
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        //sempre que haver um Yask eu terei que utilizar o AWAIT, pois ele carrega os arquvos em sincronismo, e isso pode demorar um pouco, 
+        // é sempre bom criar um IF para entder se essas tarefas estão vindo nulas
+        tarefas = await http.GetFromJsonAsync<List<Tarefa>>("Dados/Tarefas.json");//aqui vai carregar a lsiata de tarefas que esta na pasta dados
+    }
+
+    public class Tarefa
+    {
+        public Guid ID { get; set; }
+        public string Descricao { get; set; }
+        public bool Concluida { get; set; }
+        public DateTime DataDescricao { get; set; }
+    }
+    private string novaTarefa = "";
+
+    private List<Tarefa> tarefas = new List<Tarefa>();//exercicio modulo 03 - Tarefas
+
+    //Cadastrar uma nova tarefa
+
+    void AdicionarNovaTarefa(){
+        if (!string.IsNullOrWhiteSpace(novaTarefa))
+        {
+            tarefas.Add(new Tarefa
+                {
+                    DataDescricao = DateTime.Now,
+                    Descricao = novaTarefa,
+                    ID = Guid.NewGuid()
+        });
+        }
+    }
+
+    void RemoveTarefa( Guid  id){
+
+        tarefas.Remove(tarefas.First(x => x.ID == id));
+    }
+
+
+
+}

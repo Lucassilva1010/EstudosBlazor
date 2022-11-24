@@ -1,0 +1,20 @@
+[
+  //Essas informações podem vir de uma API, porém tomar cuidar para que nenhum dado vem com os tamanhos errados, para que não afete no no funcinamento
+  //Tive um erro aqui pq eu coloquei os Has com tamanhos errados
+
+  {
+    "id": "f0dcda47-1f23-4538-92e0-a47dcdcc7850",
+    "descricao": "Fazer o curso Blazor",
+    "concluida": false,
+    "datacriacao": "2022-11-24"
+  },
+
+  {
+    "id": "d21b0f7e-a5a9-45ee-ad9b-eafd911e22fa",
+    "descricao": "Estudar Blazor",
+    "concluida": false,
+    "datacriacao": "2022-11-25"
+  }
+
+]
+
