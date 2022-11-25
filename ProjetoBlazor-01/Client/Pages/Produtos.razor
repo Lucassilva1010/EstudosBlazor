@@ -1,5 +1,27 @@
 ﻿@page "/produtoss"
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Data de Cadastro</th>
+            <th>Disponibilidade</th>
+         </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in ListaProdutos.ListProdutos)
+        {
+            //Listando as tarefas
+            <tr>
+                <td> @t.Nome</td>
+                <td> @t.Data</td>
+                <td> <input type="checkbox" @bind="t.Diponibilidade" />@t.Diponibilidade</td> @*//Adiciomnando um TowBindg para alterar em memoria o status da tarefa*@
+               @* <td><button @onclick="@(()=> RemoveTarefa(t.ID))"><i class="oi oi-trash"></i></button></td>
+     *@       </tr>
+        }
+    </tbody>
+</table>
+
 <h2> Praticando a Lista e os Laços de Repetição sendo invocado de outra pasta e classe! </h2><br/>
 <h2>Lista de Produtos com o FOR!</h2>
 @for (int i =0; i<@ListaProdutos.ListProdutos.Count; i++)

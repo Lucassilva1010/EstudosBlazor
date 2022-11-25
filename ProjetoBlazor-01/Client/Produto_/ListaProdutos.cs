@@ -14,50 +14,58 @@
                 new ItensP()
                 {
                     Nome = "Telefone Celular",
-                    Data = new DateTime(2022, 11, 17)// A representação das dats precisam ser sempre dessa forma para que possamos converter no formato correto
+                    Data = new DateTime(2022, 11, 17),// A representação das dats precisam ser sempre dessa forma para que possamos converter no formato correto
+                 Diponibilidade = false
                 },
 
                 new ItensP()
                 {
                     Nome =  "Tv de LED",
-                    Data = new DateTime(2022, 11, 17)
+                    Data = new DateTime(2022, 11, 17),
+                    Diponibilidade = false  
                 },
 
                 new ItensP()
                 {
                     Nome = "Computador",
-                    Data = new DateTime(2022, 11, 17)
+                    Data = new DateTime(2022, 11, 17),
+                    Diponibilidade = false  
                 },
 
                 new ItensP()
                 {
                     Nome = "Kit Multimedia",
-                    Data = new DateTime(2022, 11, 17)
+                    Data = new DateTime(2022, 11, 17),
+                    Diponibilidade = false  
                 },
                        
 
                 new ItensP()
                 {
                     Nome = "Fones de Ouvido",
-                    Data = new DateTime(2022, 11, 20)// A representação das dats precisam ser sempre dessa forma para que possamos converter no formato correto
+                    Data = new DateTime(2022, 11, 20),// A representação das dats precisam ser sempre dessa forma para que possamos converter no formato correto
+                    Diponibilidade = false    
                 },
 
                 new ItensP()
                 {
                     Nome =  "Telcados",
-                    Data = new DateTime(2022, 11, 20)
+                    Data = new DateTime(2022, 11, 20),
+                    Diponibilidade = false  
                 },
 
                 new ItensP()
                 {
                     Nome = "Roteadores",
-                    Data = new DateTime(2022, 11, 20)
+                    Data = new DateTime(2022, 11, 20),
+                        Diponibilidade = false
                 },
 
                 new ItensP()
                 {
                     Nome = "Mouses",
-                    Data = new DateTime(2022, 11, 20)
+                    Data = new DateTime(2022, 11, 20),
+                    Diponibilidade = false
                 }
 
             };
