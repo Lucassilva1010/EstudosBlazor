@@ -1,5 +1,7 @@
 ﻿@page "/produtoss"
 
+@*Criar a função de cadastrar o produto*@
+
 <table class="table">
     <thead>
         <tr>
@@ -21,7 +23,7 @@
         }
     </tbody>
 </table>
-
+@*
 <h2> Praticando a Lista e os Laços de Repetição sendo invocado de outra pasta e classe! </h2><br/>
 <h2>Lista de Produtos com o FOR!</h2>
 @for (int i =0; i<@ListaProdutos.ListProdutos.Count; i++)
@@ -36,9 +38,9 @@
             
         </ol>
     </ul>
-}
+}*@
 
-
+@*
 <br/><h2>Lista de Novos Produto por um FOREACH!</h2>
 @foreach(var iten in @ListaProdutos.ListProdutos){//Não acessa o Metodo
     <ul>
@@ -56,7 +58,7 @@
        
     
 }
-
+*@
 <h1>O ultimo Produto Cadastrado foi!</h1>
 
 @for (var i = 0; i < @PromocaoItens.ProdutosPromo.Count; i++)
