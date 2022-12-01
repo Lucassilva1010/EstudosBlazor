@@ -1,41 +1,57 @@
 ﻿@page "/produtoss"
+@inject HttpClient http
 
 @*Criar a função de cadastrar o produtos e descentralizar esse monte de ações que tem aqui para outra classe*@
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Produto</th>
-            <th>Data de Cadastro</th>
-            <th>Disponibilidade</th>
-         </tr>
-    </thead>
-    <tbody>
-        @foreach (var t in ListaProdutos.ListProdutos)
-        {
-            //Listando as tarefas
+
+@if (produtos == null)
+{
+    <P>Casrregando....</P>
+}
+else if (!produtos.Any())
+{
+    <p>Ainda não existem Podutos.......</p>
+}
+else
+{
+
+    <table class="table">
+        <thead>
             <tr>
-                <td> @t.Nome</td>
-                <td> @t.Data</td>
-                <td> <input type="checkbox" @bind="t.Diponibilidade" />@t.Diponibilidade</td> @*//Adiciomnando um TowBindg para alterar em memoria o status da tarefa*@
-               @* <td><button @onclick="@(()=> RemoveTarefa(t.ID))"><i class="oi oi-trash"></i></button></td>
-     *@       </tr>
-        }
-    </tbody>
-</table>
+                <th>Produto</th>
+                <th>valor</th>
+                <th>Data de Cadastro</th>
+                <th>Disponibilidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in produtos)
+            {
+                //Listando os Produtos
+                <tr>
+                    <td> @t.Nome</td>
+                    <td> @t.Valor</td>
+                    <td> @t.Data</td>
+                    <td> <input type="checkbox" @bind="t.Diponibilidade" />@t.Diponibilidade</td> @*//Adiciomnando um TowBindg para alterar em memoria o status da tarefa*@
+                    <td><button @onclick="@(()=> RemoveProduto(t.ID))"><i class="oi oi-trash"></i></button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 @*
 <h2> Praticando a Lista e os Laços de Repetição sendo invocado de outra pasta e classe! </h2><br/>
 <h2>Lista de Produtos com o FOR!</h2>
 @for (int i =0; i<@ListaProdutos.ListProdutos.Count; i++)
 {
     <ul>
-        
+
         <ol>
-          
+
                 <li>  <h4>Esse é o meu Novo Produto: @ListaProdutos.ListProdutos[i].Nome</h4></li>
                 <li>  <h4>A sua data de Cadastro foi: @ListaProdutos.ListProdutos[i].Data.ToString("dd/MM/yyyy")</h4></li>
                 <br/>
-            
+
         </ol>
     </ul>
 }*@
@@ -44,37 +60,89 @@
 <br/><h2>Lista de Novos Produto por um FOREACH!</h2>
 @foreach(var iten in @ListaProdutos.ListProdutos){//Não acessa o Metodo
     <ul>
-        
+
           <ol>
-                
+
            <li>
                 <h4>Esse é o meu Novo Produto: @iten.Nome </h4>
                 <h4>A sua data de Cadastro foi: @iten.Data.ToString("dd/MM/yyyy")</h4>
              </li>
            <br />
-    
-         </ol> 
+
+         </ol>
     </ul>
-       
-    
+
+
 }
 *@
-<h1>O ultimo Produto Cadastrado foi!</h1>
+<h3> Novo Produto</h3>
+<div class="form-group">
+    <div>
+        <label> Produto</label>
+        <div><input type="text" placeholder="Nome do Produto" @bind="novoProduto" /></div>
+    </div>
+    <br />
 
-@for (var i = 0; i < @PromocaoItens.ProdutosPromo.Count; i++)
+    <div>
+
+        <label> Valor do Produto</label>
+        <div> <input type="text" placeholder="Valor do Produto" @bind="novoValor" /></div>
+        <br />
+    </div>
+    <button class="btn btn-primary" @onclick="AdicionarNovaProduto">Cadastrar do Produto</button>
+
+
+</div>
+
+
+<br />
+    <div class="align-bottom align-content-center">
+        <h3>O ultimo Produto Cadastrado foi!</h3>
+    </div>
+@for (var i = 0; i < produtos.Count; i++)
 {
-    @if (i == PromocaoItens.ProdutosPromo.Count-1)
+    @if (i == produtos.Count - 1)
     {
-        <h3>Este é o ultimo produto</h3>
-        
-         <h4>O ultimo Produto do Estoque é: @PromocaoItens.ProdutosPromo[i].Nome</h4>
+      
+        <h6>O ultimo Produto cadastrado no Estoque foi: @produtos[i].Nome</h6>
+        <h6>O valor cadastrado no Estoque foi de : @produtos[i].Valor</h6>
+        <h6>A data de cadastro no Estoque foi: @produtos[i].Data</h6>
     }
-   
+
 }
 
 @code {
 
-  
+    protected override async Task OnInitializedAsync()
+    {
+        produtos = await http.GetFromJsonAsync<List<ItensP>>("Dados/ProdutosBD.json");
+    }
+
+    private string novoProduto = "";
+    private string novoValor = "";
+    private List<ItensP> produtos = new List<ItensP>();
+
+
+    //Adicionando um novo produto
+    void AdicionarNovaProduto()
+    {
+        if (!string.IsNullOrWhiteSpace(novoProduto) && !string.IsNullOrWhiteSpace(novoValor))
+        {
+            produtos.Add(new ItensP
+                {
+                    Nome = novoProduto,
+                    Valor = novoValor,
+                    Data = DateTime.Now,
+                    Diponibilidade = true
+                });
+        }
+    }
+
+    //Deletando um Produto
+    void RemoveProduto(Guid id)
+    {
+        produtos.Remove(produtos.First(x => x.ID == id));
+    }
 
 
 }

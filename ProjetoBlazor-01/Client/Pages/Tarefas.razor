@@ -56,7 +56,7 @@ Depois fazer com que essa mesma lista que está em WWWRoot apareça em toda a ap
 @code {
     protected override async Task OnInitializedAsync()
     {
-        //sempre que haver um Yask eu terei que utilizar o AWAIT, pois ele carrega os arquvos em sincronismo, e isso pode demorar um pouco, 
+        //sempre que haver um Task eu terei que utilizar o AWAIT, pois ele carrega os arquvos em sincronismo, e isso pode demorar um pouco, 
         // é sempre bom criar um IF para entder se essas tarefas estão vindo nulas
         tarefas = await http.GetFromJsonAsync<List<Tarefa>>("Dados/Tarefas.json");//aqui vai carregar a lsiata de tarefas que esta na pasta dados
     }

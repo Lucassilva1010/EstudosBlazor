@@ -1,0 +1,17 @@
+{
+  {
+    "id": "f0dcda47-1f23-4538-92e0-a47dcdcc7850",
+    "Nome": "Teste Produto",
+    "Valor": "Teste Produtoo Valor",
+    "Data": "2022-12-01",
+    "Diponibilidade": false
+
+  },
+
+  {
+    "id": "d21b0f7e-a5a9-45ee-ad9b-eafd911e22fa",
+    "descricao": "Estudar Blazor",
+    "concluida": false,
+    "datacriacao": "2022-11-25"
+  }
+}
