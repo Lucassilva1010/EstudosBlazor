@@ -4,14 +4,14 @@
     "Nome": "Teste Produto",
     "Valor": "Teste Produtoo Valor",
     "Data": "2022-12-01",
-    "Diponibilidade": false
+    "Diponibilidade": true
 
   },
 
   {
     "id": "d21b0f7e-a5a9-45ee-ad9b-eafd911e22fa",
     "descricao": "Estudar Blazor",
-    "concluida": false,
+    "concluida": true,
     "datacriacao": "2022-11-25"
   }
 }

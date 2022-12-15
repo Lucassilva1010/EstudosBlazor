@@ -1,0 +1,95 @@
+﻿@page "/cadProdutos"  
+<h3>Cadastro de Novos Produtos</h3>
+
+@if (produtos == null)
+{
+    <p>Casrregando....</p>
+}
+else if (!produtos.Any())
+{
+    <p>Ainda não existem Novos Podutos .......</p>
+}
+else
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>valor</th>
+                <th>Data de Cadastro</th>
+                <th>Disponibilidade</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var t in produtos)
+            {
+                //Listando os Produtos
+                <tr>
+                    <td> @t.Nome</td>
+                    <td> @t.Valor</td>
+                    <td> @t.Data</td>
+                    <td> <input type="checkbox" @bind="t.Diponibilidade" />@t.Diponibilidade</td> @*//Adiciomnando um TowBindg para alterar em memoria o status da tarefa*@
+                    <td><button @onclick="@(()=> RemoveProduto(t.ID))"><i class="oi oi-trash"></i></button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+<h3> Novo Produto</h3>
+    <div class="form-group">
+        <div>
+            <label> Produto</label>
+            <div><input type="text" placeholder="Nome do Produto" @bind="novoProduto" /></div>
+        </div>
+        <br />
+
+        <div>
+
+            <label> Valor do Produto</label>
+            <div> <input type="text" placeholder="Valor do Produto" @bind="novoValor" /></div>
+            <br />
+        </div>
+        <button class="btn btn-primary" @onclick="AdicionarNovaProduto">Cadastrar do Produto</button>
+
+
+    </div>
+
+
+@code {
+
+
+    private string novoProduto = "";
+    private string novoValor = "";
+    private List<ItensP> produtos = new List<ItensP>();
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    produtos = await http.GetFromJsonAsync<List<ItensP>>("Dados/ProdutosBD.json");
+    //}
+
+    //Adicionando um novo produto
+    void AdicionarNovaProduto()
+    {
+        if (!string.IsNullOrWhiteSpace(novoProduto) && !string.IsNullOrWhiteSpace(novoValor))
+        {
+            produtos.Add(new ItensP
+                {
+                    Nome = novoProduto,
+                    Valor = novoValor,
+                    Data = DateTime.Now,
+                    Diponibilidade = true
+                });
+        }
+    }
+
+    //Deletando um Produto
+    void RemoveProduto(Guid id)
+    {
+        produtos.Remove(produtos.First(x => x.ID == id));
+    }
+
+}
